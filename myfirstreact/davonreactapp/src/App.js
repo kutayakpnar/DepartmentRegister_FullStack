@@ -13,7 +13,7 @@ const App = () => {
   // API'den kullanıcıları almak için kullanılan fonksiyon
   const fetchUsers = async () => {
     try { //https://jsonplaceholder.typicode.com/users
-      const response = await axios.get('localhost:8082/api/v1/demo');
+      const response = await axios.get('http://localhost:8082/api/v1/demo');
       setUsers(response.data);
     } catch (error) {
       console.error('Error fetching users:', error);
@@ -27,7 +27,7 @@ const App = () => {
   // Kullanıcı eklemek için kullanılan fonksiyon
   const handleAddUser = async (user) => {
     try {
-      const response = await axios.post('https://jsonplaceholder.typicode.com/users', user);
+      const response = await axios.post('http://localhost:8082/api/v1/demo', user);
       setUsers([...users, response.data]);
     } catch (error) {
       console.error('Error adding user:', error);
@@ -53,7 +53,7 @@ const App = () => {
   // Kullanıcı güncellemek için kullanılan fonksiyon
   const handleUpdateUser = async (id, updatedUser) => {
     try {
-      await axios.put(`https://jsonplaceholder.typicode.com/users/${id}`, updatedUser);
+      await axios.put(`'http://localhost:8082/api/v1/demo'${id}`, updatedUser);
       setUsers(users.map((user) => (user.id === id ? { ...user, ...updatedUser } : user)));
       setEditing(false);
       setCurrentUser({});

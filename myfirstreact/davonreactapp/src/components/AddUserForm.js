@@ -12,7 +12,7 @@ const AddUserForm = ({ onAddUser }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('localhost:8082/api/v1/demo', formData);
+      const response = await axios.post('http://localhost:8082/api/v1/demo', formData);
       onAddUser(response.data);
       setFormData({ departmentName: '', departmentCode: '', departmentAddress: '' });
     } catch (error) {

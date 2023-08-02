@@ -4,7 +4,7 @@ import axios from 'axios';
 const UserList = ({ users, onDeleteUser, onEditUser }) => {
   const handleDeleteUser = async (id) => {
     try {
-      await axios.delete(`localhost:8082/api/v1/demo/${id}`);
+      await axios.delete(`http://localhost:8082/api/v1/demo/${id}`);
       onDeleteUser(id);
     } catch (error) {
       console.error('Error deleting department:', error);

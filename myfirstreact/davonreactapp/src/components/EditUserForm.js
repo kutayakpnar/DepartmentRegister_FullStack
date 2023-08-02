@@ -16,7 +16,7 @@ const EditUserForm = ({ user, onUpdateUser, onCancelEdit }) => {
     e.preventDefault();
     try {
       // API'ye PUT isteği göndererek güncelleme işlemini gerçekleştiriyoruz
-      await axios.put(`localhost:8082/api/v1/demo/${user.id}`, formData);
+      await axios.put(`'http://localhost:8082/api/v1/demo'${user.id}`, formData);
       onUpdateUser(formData); // Backend güncelleme başarılıysa, kullanıcının bilgilerini güncelliyoruz
       onCancelEdit();
     } catch (error) {
