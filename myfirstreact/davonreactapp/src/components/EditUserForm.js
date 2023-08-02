@@ -1,53 +1,56 @@
 import React, { useState, useEffect } from 'react';
 import './css/EditUserForm.css'; // CSS dosyasını düzeltelim
-const EditUserForm = ({ user, onUpdateUser, onCancelEdit }) => {
-  const [formData, setFormData] = useState({});
+import axios from 'axios';
 
-  useEffect(() => {
-    setFormData(user);
-  }, [user]);
+// components/EditUserForm.js
+
+
+const EditUserForm = ({ user, onUpdateUser, onCancelEdit }) => {
+  const [formData, setFormData] = useState({ ...user });
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    onUpdateUser(user.id, formData);
+    try {
+      // API'ye PUT isteği göndererek güncelleme işlemini gerçekleştiriyoruz
+      await axios.put(`localhost:8082/api/v1/demo/${user.id}`, formData);
+      onUpdateUser(formData); // Backend güncelleme başarılıysa, kullanıcının bilgilerini güncelliyoruz
+      onCancelEdit();
+    } catch (error) {
+      console.error('Error updating user:', error);
+    }
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <input
         type="text"
-        name="departmentId"
-        placeholder="Department ID"
-        value={formData.departmentId || ''}
-        onChange={handleInputChange}
-      />
-      <input
-        type="text"
         name="departmentName"
         placeholder="Department Name"
-        value={formData.departmentName || ''}
+        value={formData.departmentName}
         onChange={handleInputChange}
       />
       <input
         type="text"
         name="departmentCode"
         placeholder="Department Code"
-        value={formData.departmentCode || ''}
+        value={formData.departmentCode}
         onChange={handleInputChange}
       />
       <input
         type="text"
         name="departmentAddress"
         placeholder="Department Address"
-        value={formData.departmentAddress || ''}
+        value={formData.departmentAddress}
         onChange={handleInputChange}
       />
       <button type="submit">Update Department</button>
-      <button type="button" onClick={onCancelEdit}>Cancel</button>
+      <button className="cancel" type="button" onClick={onCancelEdit}>
+        Cancel
+      </button>
     </form>
   );
 };

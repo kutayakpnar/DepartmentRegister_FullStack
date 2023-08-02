@@ -1,28 +1,27 @@
 import React, { useState } from 'react';
 import './css/AddUserForm.css'; // CSS dosyasını düzeltelim
+import axios from 'axios';
 
 const AddUserForm = ({ onAddUser }) => {
-  const [formData, setFormData] = useState({ departmentId: '', departmentName: '', departmentCode: '', departmentAddress: '' });
+  const [formData, setFormData] = useState({ departmentName: '', departmentCode: '', departmentAddress: '' });
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    onAddUser(formData);
-    setFormData({ departmentId: '', departmentName: '', departmentCode: '', departmentAddress: '' });
+    try {
+      const response = await axios.post('localhost:8082/api/v1/demo', formData);
+      onAddUser(response.data);
+      setFormData({ departmentName: '', departmentCode: '', departmentAddress: '' });
+    } catch (error) {
+      console.error('Error adding department:', error);
+    }
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="departmentId"
-        placeholder="Department ID"
-        value={formData.departmentId}
-        onChange={handleInputChange}
-      />
       <input
         type="text"
         name="departmentName"

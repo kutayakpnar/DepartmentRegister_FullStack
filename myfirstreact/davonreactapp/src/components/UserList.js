@@ -1,36 +1,42 @@
 import React from 'react';
+import axios from 'axios';
 
 const UserList = ({ users, onDeleteUser, onEditUser }) => {
+  const handleDeleteUser = async (id) => {
+    try {
+      await axios.delete(`localhost:8082/api/v1/demo/${id}`);
+      onDeleteUser(id);
+    } catch (error) {
+      console.error('Error deleting department:', error);
+    }
+  };
+
   return (
-    <div>
-      <h2>Department List</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th> {/* ID alanını tabloya ekliyoruz */}
-            <th>Department Name</th>
-            <th>Department Code</th>
-            <th>Department Address</th>
-            <th>Actions</th>
+    <table>
+      <thead>
+        <tr>
+          <th>Department Name</th>
+          <th>Department Code</th>
+          <th>Department Address</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {users.map((user) => (
+          <tr key={user.id}>
+            <td>{user.departmentName}</td>
+            <td>{user.departmentCode}</td>
+            <td>{user.departmentAddress}</td>
+            <td>
+              <button onClick={() => onEditUser(user)}>Edit</button>
+              <button onClick={() => handleDeleteUser(user.id)}>Delete</button>
+            </td>
           </tr>
-        </thead>
-        <tbody>
-          {users.map((user) => (
-            <tr key={user.id}>
-              <td>{user.departmentId}</td> {/* ID alanını burada gösteriyoruz */}
-              <td>{user.departmentName}</td>
-              <td>{user.departmentCode}</td>
-              <td>{user.departmentAddress}</td>
-              <td>
-                <button className="edit" onClick={() => onEditUser(user)}>Edit</button>
-                <button className="delete" onClick={() => onDeleteUser(user.id)}>Delete</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+        ))}
+      </tbody>
+    </table>
   );
 };
 
 export default UserList;
+
