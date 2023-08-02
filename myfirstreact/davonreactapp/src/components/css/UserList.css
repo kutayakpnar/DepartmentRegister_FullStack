@@ -1,0 +1,23 @@
+/* UserList.css */
+
+/* Edit ve Delete butonları için stil ayarları */
+
+button {
+    margin-left: 5px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  /* Edit butonu için arka plan rengi */
+  button.edit {
+    background-color: #4caf50; /* Yeşil renk - #4caf50 olarak belirledik, istediğiniz rengi seçebilirsiniz */
+  }
+  
+  /* Delete butonu için arka plan rengi */
+  button.delete {
+    background-color: #f44336; /* Kırmızı renk - #f44336 olarak belirledik, istediğiniz rengi seçebilirsiniz */
+  }
+  

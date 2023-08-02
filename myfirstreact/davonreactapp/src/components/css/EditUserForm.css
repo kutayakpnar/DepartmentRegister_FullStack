@@ -1,0 +1,30 @@
+/* EditUserForm.css */
+
+/* Form için stil ayarları */
+form {
+  margin-bottom: 20px;
+}
+
+/* Input alanları için stil ayarları */
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc; /* Çerçeve rengi - #ccc olarak belirledik, istediğiniz rengi seçebilirsiniz */
+  border-radius: 4px;
+}
+
+/* Update (Edit Department) butonu için stil ayarları */
+button[type='submit'] {
+  background-color: #008CBA; /* Mavi renk - #008CBA olarak belirledik, istediğiniz rengi seçebilirsiniz */
+  color: #fff; /* Metin rengi - #fff (beyaz) olarak belirledik */
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+}
+
+/* Update (Edit Department) butonu üzerine gelince değişen arka plan rengi */
+button[type='submit']:hover {
+  background-color: #006d9c; /* Koyu mavi renk - #006d9c olarak belirledik, istediğiniz rengi seçebilirsiniz */
+}

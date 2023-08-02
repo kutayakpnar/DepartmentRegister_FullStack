@@ -1,0 +1,71 @@
+/* App.css */
+
+/* Ana bileşenin arka plan rengini değiştirin */
+body {
+  background-color: #f2f2f2; /* Arka plan rengi - #f2f2f2 olarak belirledik, istediğiniz rengi seçebilirsiniz */
+}
+
+/* Ana bileşen içeriğini ortala */
+div {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* H1 başlık rengini ve boyutunu ayarla */
+h1 {
+  color: #333; /* Metin rengi - #333 olarak belirledik, istediğiniz rengi seçebilirsiniz */
+  font-size: 28px; /* Yazı boyutu - 28px olarak belirledik, istediğiniz boyutu seçebilirsiniz */
+  margin-bottom: 20px;
+}
+
+/* Form ve Input alanları için stil ayarları */
+form {
+  margin-bottom: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc; /* Çerçeve rengi - #ccc olarak belirledik, istediğiniz rengi seçebilirsiniz */
+  border-radius: 4px;
+}
+
+/* Submit (Add User) ve Update (Edit User) butonları için stil ayarları */
+button[type='submit'],
+button[type='button'] {
+  background-color: #008CBA; /* Mavi renk - #008CBA olarak belirledik, istediğiniz rengi seçebilirsiniz */
+  color: #fff; /* Metin rengi - #fff (beyaz) olarak belirledik */
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+}
+
+/* Submit (Add User) ve Update (Edit User) butonları üzerine gelince değişen arka plan rengi */
+button[type='submit']:hover,
+button[type='button']:hover {
+  background-color: #006d9c; /* Koyu mavi renk - #006d9c olarak belirledik, istediğiniz rengi seçebilirsiniz */
+}
+
+/* Edit ve Delete butonları için stil ayarları */
+button.edit,
+button.delete {
+  margin-left: 5px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Edit butonu için arka plan rengi */
+button.edit {
+  background-color: #4caf50; /* Yeşil renk - #4caf50 olarak belirledik, istediğiniz rengi seçebilirsiniz */
+}
+
+/* Delete butonu için arka plan rengi */
+button.delete {
+  background-color: #f44336; /* Kırmızı renk - #f44336 olarak belirledik, istediğiniz rengi seçebilirsiniz */
+}
